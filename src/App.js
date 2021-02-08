@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react'
+import ButtonArray from './ButtonArray';
+import Buttons from './Buttons';
 
-function App() {
+export default function App() {
+  const [text,settext] = useState("HI PRESS BUTTON");
+  const clickedHandler=(name)=>{
+    if(name===ButtonArray[3].name){
+      settext("HI PRESS BUTTON");
+    }
+    else
+      settext(`YOU CLICkED ${name}`)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>{text} </h1>
+      <Buttons clicked={clickedHandler}></Buttons>
     </div>
-  );
+  )
 }
-
-export default App;
