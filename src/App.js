@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Buttons from "./Buttons";
+import * as Variable from "./Variable/Variable";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//STRUCTURE WILL BE CLEAN IF WRITE REDUCER AND STORE IN INDEX.JS
+//VIEW 7.1 AND 7 TASK
+
+class App extends Component {
+  clickHandler = (data) => {
+    if (data === Variable.RESET) {
+      console.log(data);
+      return this.props.dispatch({ type: Variable.RESET, payload: data });
+    } else {
+      console.log(data);
+      return this.props.dispatch({ type: Variable.CHANGETEXT, payload: data });
+    }
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>{this.props.text}</h1>
+        <Buttons clicked={this.clickHandler}></Buttons>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    text: state.text,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return dispatch;
+};
+export default connect(mapStateToProps, null)(App);
