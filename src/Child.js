@@ -3,15 +3,23 @@ import Buttons from "./Buttons";
 import { DataContext } from "./Context/GlobalState";
 
 export default class Child extends Component {
-  static contextType = DataContext;
+ // static contextType = DataContext;
   
 
   render() {
     return (
+      <DataContext.Consumer>
+        {
+          (context)=>
+        
       <div>
-        <h1>{this.context.text}</h1>
-        <Buttons clicked={this.context.clicked}></Buttons>
+        <h1>{context.text}</h1>
+        <Buttons clicked={context.clicked}></Buttons>
       </div>
+  }
+      </DataContext.Consumer>
     );
   }
 }
+
+
