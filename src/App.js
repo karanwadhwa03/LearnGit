@@ -14,6 +14,7 @@ export default function App() {
   
   return (
     <div>
+      <h1>BUTTON TASK WITH HOOKS</h1>
       <h1>{text} </h1>
       <Buttons clicked={clickedHandler}></Buttons>
     </div>
