@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Child from './Child'
+import GlobalState from './Context/GlobalState'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <GlobalState>
+        <h1>BUTTON TASK WIITH CONTEXT API HOOKS</h1>
+        <Child></Child>
+      </GlobalState>
     </div>
-  );
+  )
 }
-
-export default App;
