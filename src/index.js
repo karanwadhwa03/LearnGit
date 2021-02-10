@@ -3,11 +3,35 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+
+
+//Reducer
+const ButtonReducer=(state={text:'HI PRESS ANY TEXT'},action)=>{
+  switch(action.type){
+    case "RESET":
+      return {
+        ...state,text:'HI PRESS ANY TEXT'
+      }
+    case "CHANGETEXT":
+      return{
+        ...state,text:`You Clicked ${action.payload}`
+      }
+    default:
+      return state
+  }
+}
+
+const Store=createStore(ButtonReducer);
+
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={Store}>
     <App />
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 
